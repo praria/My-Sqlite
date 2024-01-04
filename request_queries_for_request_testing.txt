@@ -1,0 +1,133 @@
+   QUERIES FOR REQUEST CLASS
+************************************ 
+
+# test case 1: Select operation using wild card '*'
+
+    request = MySqliteRequest.new
+    request = request.from('nba_player_data_light.csv') 
+    request = request.select('*')
+    result  = request.run 
+    p result 
+
+************************************************************
+
+# test case 2: Select operation using wild card '*'
+
+    request = MySqliteRequest.new
+    request = request.from('nba_player_data_light.csv') 
+    request = request.select('*') 
+    request = request.where('id', 3)
+    result  = request.run 
+    p result 
+
+************************************************************
+   
+# test case 3: Select operation using specific column names
+
+    request = MySqliteRequest.new
+    request = request.from('nba_player_data_light.csv')
+    request = request.select(['name', 'college'])
+    result  = request.run 
+    p result 
+
+********************************************************
+# test case 4: DESCENDING Order Operation
+
+        request = MySqliteRequest.new
+        request = request.from('nba_player_data_light.csv')
+        request = request.select('name') 
+        request = request.order(:desc, 'name')
+        result  = request.run 
+        p result 
+
+********************************************************************
+# test case 5: ASCENDING Order Operation
+
+        request = MySqliteRequest.new
+        request = request.from('nba_player_data_light.csv')
+        request = request.select('name') 
+        request = request.order(:asc, 'name')
+        result  = request.run 
+        p result 
+
+********************************************************************
+
+# test case 6: Select with WHERE Condition - 1
+
+    request = MySqliteRequest.new
+    request = request.from('nba_player_data_light.csv')
+    request = request.select('id')
+    request = request.where('name', 'Zaid Abdul-Aziz')
+    request = request.where('year_start', '1969') 
+    result  = request.run 
+    p result 
+
+ *******************************************************************
+test case 7: Select with WHERE Condition - 2
+
+    request = MySqliteRequest.new
+    request = request.from('nba_player_data_light.csv')
+    request = request.select(['name', 'college'])
+    request = request.where('name', 'Alaa Abdelnaby')
+    request = request.where('birth_day', 'June 24') 
+    result  = request.run 
+    p result 
+
+    
+**********************************************************************************
+
+test case 8: INSERT Operation
+
+    request = MySqliteRequest.new
+    request = request.insert('nba_player_data_light.csv')
+    request = request.values({"id" => "10", "name" => "Don Adams", "year_start" => "1971", "year_end" => "1977", "position" => "F", "height" => "6-6", "weight" => "210", "birth_date" => "November 27, 1947", "college" => "Northwestern University"})
+    request.run 
+
+
+*************************************************************************
+
+test case 9: UPDATE Operation
+
+    request = MySqliteRequest.new 
+    request = request.update('nba_player_data_light.csv')
+    request = request.set('college'=> 'Pokhara University')
+    request = request.where('id', '10')
+    result  = request.run
+    p result 
+
+    
+*******************************************************************
+
+#test case 10: DELETE Operation
+
+    request = MySqliteRequest.new 
+    request = request.from('nba_player_data_light.csv')
+    request = request.delete
+    request = request.where('id', 10)
+    result  = request.run
+    p result 
+
+    
+
+*************************************************************
+
+#test case 11: JOIN Operation
+    request = MySqliteRequest.new
+    request = request.from('orders.csv')
+    request = request.join('customerid', 'orders.csv', 'customerid')
+    result  = request.run 
+    #result = result.map(&:to_h)
+    p result
+
+   
+**************************************************************************
+
+
+
+    
+
+
+
+
+
+

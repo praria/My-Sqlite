@@ -1,0 +1,49 @@
+CLI queries:
+************************
+    SELECT Operation using wild card '*' and where condition
+    ***********************************************************
+
+    SELECT '*' FROM nba_player_data_light.csv; 
+    SELECT '*' FROM nba_player_data_light.csv WHERE id = '3';
+
+
+    SELECT Operation using specific column name and where condition
+    ***************************************************************
+
+
+    SELECT name, college FROM nba_player_data_light.csv; 
+    SELECT name, college FROM nba_player_data_light.csv WHERE id = '5'; 
+    SELECT id FROM nba_player_data_light.csv WHERE year_start = '1969';
+    SELECT id FROM nba_player_data_light.csv WHERE name = 'Alaa Abdelnaby'; 
+    SELECT name, college FROM nba_player_data_light.csv WHERE name = 'Alaa Abdelnaby' AND birth_day = 'June 24'; 
+
+
+    ASCENDING AND DESENDING Order Operation
+    *****************************************
+
+    SELECT name FROM nba_player_data_light.csv ORDER BY name ASC; 
+    SELECT name FROM nba_player_data_light.csv ORDER BY name DESC; 
+
+
+    INSERT Operation
+    *******************
+
+    INSERT INTO nba_player_data_light.csv VALUES (10, 'Don Adams', 1971, 1977, 'F', '6-6', 210, 'November 27', 'Northwestern University');
+
+
+    UPDATE Operation
+    *****************
+
+    UPDATE nba_player_data_light.csv SET college = 'Pokhara University' WHERE id = '10';
+
+
+    DELETE Operation
+    *********************
+    
+    DELETE FROM nba_player_data_light.csv WHERE id = '10';
+    
+
+    JOIN Operation
+    **************** 
+
+    SELECT '*' FROM orders.csv JOIN customers.csv ON orders.customerid = customers.customerid;
